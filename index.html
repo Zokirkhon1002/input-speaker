@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgb(60, 223, 238);
+
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      h1 {
+        font-size: 45px;
+        text-align: center;
+      }
+      input {
+        display: block;
+        margin: 20px auto;
+        color: #2f192e;
+        font-size: 25px;
+        font-weight: bold;
+        width: 100%;
+        max-width: 350px;
+        padding: 15px 20px;
+        border: none;
+        outline: none;
+        background-color: rgb(255, 255, 255);
+        border-radius: 16px 0px 16px 0px;
+        border-bottom: 3px solid #61dafb;
+        transition: all 0.2s ease-in-out;
+      }
+      input:focus {
+        background-color: #fff;
+        color: #2f192e;
+        border-radius: 0px 16px 0px 16px;
+        border-bottom: 3px solid rgb(106, 235, 112);
+      }
+      button {
+        cursor: pointer;
+        background-color: rgb(25, 22, 56);
+        color: #fff;
+        border-radius: 16px 0px 16px 0px;
+        border-bottom: 3px solid #61dafb;
+        transition: all 0.2s ease-in-out;
+        font-size: 25px;
+        font-weight: bold;
+        width: 100%;
+        max-width: 350px;
+        padding: 15px 20px;
+      }
+      button:hover {
+        cursor: pointer;
+        background-color: rgb(25, 22, 56);
+        color: #fff;
+        transform: scale(1.08);
+        border-radius: 0px 16px 0px 16px;
+        border-bottom: 3px solid rgb(106, 235, 112);
+      }
+      p {
+          text-align: center;
+          background-color: #ffff00;
+          color: #ff0000;
+          padding: 20px;
+          line-height: 25px;
+          font-size: 25px;
+          border-radius: 10px;
+
+      }
+      @media screen and (max-width: 600px){
+          form {
+              padding: 10px;
+          }
+          input{
+              width: 100%;
+              max-width: 500px;
+              line-height: 50px;
+              font-size: 30px;
+          }
+          button {
+              width: 100%;
+              max-width: 500px;
+              font-size: 35px;
+              padding: 20px 30px;
+          }
+          p {
+            padding: 30px;
+          line-height: 45px;
+          font-size: 45px;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Salom Dunyo</h1>
+    <form>
+      <input
+        type="text"
+        name="firstName"
+        id="fName"
+        placeholder="Name..."
+        value="Zokirkhon"
+        onchange="myFunction1()"
+      />
+      <input
+        type="text"
+        name="firstName"
+        id="lName"
+        placeholder="surName..."
+        value="Kotibkhonov"
+        onchange="myFunction2()"
+      />
+      <button onclick="myFunction()">Speak my Fullname</button>
+    </form>
+    <p>Only Supported by: Chrome, Edge, Samsung Internet</p>
+    <script>
+      let fName = document.getElementById("fName");
+      let lName = document.getElementById("lName");
+
+      function myFunction() {
+        const firstName = fName.value;
+        const lastName = lName.value;
+        const Speech = new SpeechSynthesisUtterance(`${firstName} ${lastName}`);
+        Speech.volume = 2;
+        Speech.rate = 1;
+        Speech.pitch = 2;
+
+        window.speechSynthesis.speak(Speech);
+        event.preventDefault();
+      }
+      function myFunction1() {
+        const firstName = fName.value;
+        const Speech = new SpeechSynthesisUtterance(firstName);
+        Speech.volume = 2;
+        Speech.rate = 1;
+        Speech.pitch = 2;
+
+        window.speechSynthesis.speak(Speech);
+        event.preventDefault();
+      }
+      function myFunction2() {
+        const lastName = lName.value;
+        const Speech = new SpeechSynthesisUtterance(lastName);
+        Speech.volume = 2;
+        Speech.rate = 1;
+        Speech.pitch = 2;
+
+        window.speechSynthesis.speak(Speech);
+        event.preventDefault();
+      }
+    </script>
+  </body>
+</html>
